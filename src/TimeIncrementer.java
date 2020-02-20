@@ -3,22 +3,16 @@ public class TimeIncrementer {
     public int hours;
     public int minutes;
     public int seconds;
-    public boolean military;
 
-    public TimeIncrementer(int hours, int minutes, int seconds, boolean military) {
+    public TimeIncrementer(int hours, int minutes, int seconds) {
 
         this.hours = hours;
         this.minutes = minutes;
         this.seconds = seconds;
 
-        if (military)
-            this.military = true;
-        else
-            this.military = false;
-
     }
 
-    public String displayTime() {
+    public String displayTime(boolean military) {
 
         String hourString = String.format("%02d", hours);
         String minuteString = String.format("%02d", minutes);
@@ -27,10 +21,8 @@ public class TimeIncrementer {
             return hourString + ":" + minuteString + ":" + secondString;
         }
         else {
-            if(hours < 12)
-                return String.format("%02d", hours) + ":" + minuteString + ":" + secondString + " " + "AM";
-            else
-                return String.format("%02d", hours - 12) + ":" + minuteString + ":" + secondString + " " + "PM";
+            String ampm = hours < 12 ? "AM" : "PM";
+            return String.format("%02d", hours % 12) + ":" +  minuteString + ":" +  secondString + " " + ampm;
         }
     }
 
