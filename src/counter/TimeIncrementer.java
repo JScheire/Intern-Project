@@ -2,6 +2,21 @@ package counter;
 
 public class TimeIncrementer {
 	
+	public int hours;
+	public int minutes;
+	public int seconds;
+	public boolean military;
+	
+	public TimeIncrementer(int hours, int minutes, int seconds, boolean military) {
+		if (military)
+			this.military = true;
+		else
+			this.military = false;
+		
+		
+	
+	}
+	
 	public Clock setTime(int hour, int minute, int second, boolean military) {
 		return new Clock(hour, minute, second, military);
 	}
